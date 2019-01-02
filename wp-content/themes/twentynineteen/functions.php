@@ -298,7 +298,7 @@ add_action( 'wp_head', 'twentynineteen_colors_css_wrap' );
 
 function load_js_assets() {
     if( is_page( 6 ) ) { //if page id load the script in header (6 is home page)
-        wp_enqueue_script('banner-script', '/customjs/bannerscript.js', array('jquery'), '', false);
+        wp_enqueue_script('banner-script', '/customjs/bannerscript.js', array('jquery'), '', true); //true to trigger on footer (wasn't grabbing DOM from header)
     } 
 }
  
