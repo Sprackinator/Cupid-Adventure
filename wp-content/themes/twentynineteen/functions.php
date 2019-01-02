@@ -293,6 +293,18 @@ function twentynineteen_colors_css_wrap() {
 add_action( 'wp_head', 'twentynineteen_colors_css_wrap' );
 
 /**
+* my custom scripts
+**/
+
+function load_js_assets() {
+    if( is_page( 6 ) ) { //if page id load the script in header (6 is home page)
+        wp_enqueue_script('banner-script', '/customjs/bannerscript.js', array('jquery'), '', false);
+    } 
+}
+ 
+add_action('wp_enqueue_scripts', 'load_js_assets');
+
+/**
  * SVG Icons class.
  */
 require get_template_directory() . '/classes/class-twentynineteen-svg-icons.php';

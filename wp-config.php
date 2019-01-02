@@ -26,7 +26,7 @@ define('DB_NAME', 'wp_cupid');
 define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'JeZc6jJSEMr3NNQi');
+define('DB_PASSWORD', '');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
