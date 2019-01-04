@@ -1,5 +1,5 @@
-document.getElementById("banner_button").addEventListener("click", changebanner);
-
-function changebanner(){
-	alert("test");
-}
+(function($){
+	$('#banner_button').click(function(){
+	$('#HomeBanner_Box').fadeIn(2000);
+});
+})(jQuery);
