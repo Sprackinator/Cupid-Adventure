@@ -70,7 +70,7 @@ class Posts extends Posts_Base {
 		}
 		Query_Control::add_to_avoid_list( wp_list_pluck( $this->query->posts, 'ID' ) );
 	}
-
+	
 	protected function register_query_section_controls() {
 		$this->start_controls_section(
 			'section_query',
@@ -162,7 +162,11 @@ class Posts extends Posts_Base {
 
 		$this->end_controls_section();
 	}
-
+	//function get_the_title() { //GRAB ID of page
+   //  $post = get_post( $post );
+ 
+   // $title = isset( $post->post_title ) ? $post->post_title : '';
+	//}
 	public function pre_get_posts_filter( $wp_query ) {
 		$query_id = $this->get_settings( 'posts_query_id' );
 
@@ -178,6 +182,24 @@ class Posts extends Posts_Base {
 		 * @param \WP_Query $wp_query
 		 * @param Posts     $this
 		 */
+		 add_action( 'elementor_pro/posts/query/my_custom_filter', function( $query ) {
+	// Here we set the query to fetch posts with
+	// post type of 'custom-post-type1' and 'custom-post-type2'
+		$title = get_the_title();
+			$query->set( 'category_name',  $title  );
+			//echo get_the_ID;
+		} );
+		
+		
+		 add_action( 'elementor_pro/posts/query/my_outdoor_activities', function( $query ) {
+	// Here we set the query to fetch posts with
+	// post type of 'custom-post-type1' and 'custom-post-type2'
+		$title = get_the_title();
+			$query->set( 'category__in',  [26]  );
+			//echo get_the_ID;
+		} );
+		
+		
 		do_action( "elementor_pro/posts/query/{$query_id}", $wp_query, $this );
 	}
 }
