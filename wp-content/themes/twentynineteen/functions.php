@@ -304,6 +304,9 @@ function load_js_assets() {
  
 add_action('wp_enqueue_scripts', 'load_js_assets');
 
+// Showing multiple post types in Posts Widget
+
+
 /**
  * SVG Icons class.
  */
