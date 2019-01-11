@@ -218,7 +218,6 @@ add_action( 'after_setup_theme', 'twentynineteen_content_width', 0 );
  */
 function twentynineteen_scripts() {
 	wp_enqueue_style( 'twentynineteen-style', get_stylesheet_uri(), array(), wp_get_theme()->get( 'Version' ) );
-
 	wp_style_add_data( 'twentynineteen-style', 'rtl', 'replace' );
 
 	if ( has_nav_menu( 'menu-1' ) ) {
@@ -296,16 +295,24 @@ add_action( 'wp_head', 'twentynineteen_colors_css_wrap' );
 * my custom scripts
 **/
 
-function load_js_assets() {
-    if( is_page( 6 ) ) { //if page id load the script in header (6 is home page)
+function menu_script() {
+   // if( is_page( 6 ) ) { //if page id load the script in header (6 is home page)
         wp_enqueue_script('banner-script', '/customjs/bannerscript.js', array('jquery'), '', true); //true to trigger on footer (wasn't grabbing DOM from header)
-    } 
+    //} 
 }
  
-add_action('wp_enqueue_scripts', 'load_js_assets');
+add_action('wp_enqueue_scripts', 'menu_script');
 
+function load_google_places() {
+   // if( is_page( 6 ) ) { //if page id load the script in header (6 is home page)
+        wp_enqueue_script('google_places', '/customjs/google_places_category.js', array('jquery'), '', true); 
+    //} 
+}
+ 
+add_action('wp_enqueue_scripts', 'load_google_places');
 
 /**
+
  * SVG Icons class.
  */
 require get_template_directory() . '/classes/class-twentynineteen-svg-icons.php';
